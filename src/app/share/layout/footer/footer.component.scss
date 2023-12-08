@@ -1,0 +1,105 @@
+@import '../../../../assets/styles/variables';
+
+.footer {
+  padding: 40px 0 54px 0;
+  background-color: $footer-bg-color;
+  font-family: Montserrat-500, sans-serif;
+  font-size: 16px;
+
+
+  .container {
+
+    .footer-content-menu {
+      display: flex;
+      align-items: center;
+
+      .footer-menu {
+        margin-left: 100px;
+
+        nav ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+
+          li {
+            margin-right: 30px;
+            list-style: none;
+            border-bottom: 1px solid transparent;
+
+            a {
+              font-family: "Montserrat Medium", sans-serif;
+              font-size: 16px;
+              color: $main-text-color;
+              cursor: pointer;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    .footer-content-info {
+      margin-top: 40px;
+      display: flex;
+      margin-bottom: 6px;
+
+      .info {
+
+        margin-right: 60px;
+
+        .info-title {
+          color: $blue-text-color;
+          margin-bottom: 10px;
+
+          &.social {
+            margin-bottom: 15px;
+          }
+        }
+
+        .info-text {
+          color: $main-text-color;
+          font-family: Montserrat-400, sans-serif;
+          display: block;
+
+          &.address {
+            max-width: 253px;
+          }
+
+          &.phone {
+            cursor: pointer;
+            text-decoration: none;
+          }
+
+          &.email {
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+          }
+        }
+
+        .info-icons {
+          a {
+            margin-right: 12px;
+            cursor: pointer;
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+        .call-back {
+          padding: 10px;
+          margin-top: 10px;
+          width: 153px;
+          font-size: 12px;
+
+        }
+      }
+    }
+    .footer-rights {
+      font-family: Montserrat-400, sans-serif;
+      color: $blue-text-color;
+
+    }
+  }
+}

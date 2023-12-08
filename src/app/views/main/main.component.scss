@@ -1,0 +1,280 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+
+.main-banners {
+
+  .container {
+
+    .banners-carousel {
+      position: relative;
+
+      .banners-item {
+        width: 100%;
+        height: 500px;
+        background-position: center;
+        background-size: cover;
+
+        .detailed {
+
+          &.bnr-btn {
+            position: absolute;
+            bottom: 98px;
+            left: 80px;
+          }
+        }
+      }
+
+      .banners-arrows {
+        display: flex;
+
+        a {
+          top: calc(50% - 5px);
+          display: flex;
+          position: absolute;
+          cursor: pointer;
+          z-index: 3;
+
+          &.move-backward {
+            left: 10px;
+          }
+
+          &.move-forward {
+            right: 10px;
+          }
+        }
+      }
+
+
+    }
+  }
+}
+
+.offer {
+  padding-top: 120px;
+  .container {
+
+    .offer-heading {
+      @include head-lora-38;
+      margin-bottom: 40px;
+    }
+
+    .offer-items {
+      display: flex;
+      justify-content: space-between;
+
+
+      .offer-item {
+        width: 290px;
+
+
+        .offer-item-image {
+          margin-bottom: 15px;
+        }
+
+        .offer-item-heading {
+          @include head-montserrat-20;
+          margin-bottom: 10px;
+        }
+
+        .offer-item-text {
+          color: $main-text-color;
+          font-family: Montserrat-400, sans-serif;
+          font-size: 14px;
+          margin-bottom: 33px;
+          height: 90px;
+        }
+
+        .offer-item-action {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .item-action-price {
+            color: $blue-text-color;
+            font-family: Montserrat-600, sans-serif;
+            font-size: 20px;
+
+          }
+        }
+      }
+    }
+  }
+}
+
+.about {
+  padding-top: 120px;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .about-image {
+      width: 460px;
+      height: 453px;
+      background-position: center;
+      background-size: cover;
+      margin-right: 68px;
+    }
+
+    .about-text {
+
+
+      .about-text-heading {
+        @include head-lora-38;
+        margin-bottom: 20px;
+      }
+
+      .about-text-description {
+        width: 633px;
+        color: #1E1A2B;
+        font-family: Montserrat-400, sans-serif;
+        font-size: 14px;
+        line-height: 130%;
+        margin-bottom: 40px;
+
+        span {
+          font-family: Montserrat-500, sans-serif;
+          font-size: 14px;
+        }
+
+
+      }
+
+      .about-text-small-heading {
+        color: $blue-text-color;
+        font-family: Lora-400, sans-serif;
+        font-size: 26px;
+        margin-bottom: 20px;
+      }
+
+      .about-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .about-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+
+          &:nth-child(3) {
+            margin-bottom: 0;
+          }
+          &:nth-child(4) {
+            margin-bottom: 0;
+          }
+
+          .item-text {
+            width: 256px;
+            color: #1E1A2B;
+            font-family: Montserrat-400, sans-serif;
+            font-size: 14px;
+            line-height: 130%;
+            margin-left: 20px;
+
+
+            span {
+              font-family: Montserrat-500, sans-serif;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.popular-articles {
+  padding-top: 120px;
+
+  .container {
+    position: relative;
+
+    .popular-articles-heading {
+      @include head-lora-38;
+      margin-bottom: 40px;
+    }
+
+    .popular-articles-items {
+      display: flex;
+
+      .article {
+        position: relative;
+        width: 292px;
+        height: 571px;
+        font-family: Montserrat-400, sans-serif;
+        margin-right: 25px;
+
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        .article-tag {
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          border-radius: 5px;
+          border-color: transparent;
+          box-sizing: border-box;
+          background: #FFF;
+          padding: 10px;
+
+          color: #709FDC;
+          text-align: center;
+
+          font-size: 11px;
+        }
+
+        .article-image {
+          width: 291px;
+          height: 291px;
+          margin-bottom: 15px;
+        }
+
+        .article-title {
+          color: $blue-text-color;
+          font-size: 20px;
+          line-height: 130%;
+          margin-bottom: 20px;
+        }
+
+        .article-description {
+          color: #071739;
+          font-size: 14px;
+          line-height: 130%;
+          margin-bottom: 20px;
+        }
+
+        .article-action {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          color: $blue-text-color;
+          font-size: 16px;
+          text-decoration-line: underline;
+        }
+      }
+
+    }
+    .popular-articles-action {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      margin-top: 40px;
+
+      a {
+        color: $blue-text-color;
+        font-size: 20px;
+        text-decoration: none;
+        margin-right: 14px;
+      }
+
+    }
+  }
+}
+
