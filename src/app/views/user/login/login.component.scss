@@ -1,18 +1,20 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/auth-form";
+
 
 .login {
+  padding-top: 100px;
+  padding-bottom: 92px;
 
   .container {
     display: flex;
 
-    .auth-form {
+    .login-image {
+      margin-left: 185px;
 
-      .auth-title {
-        @include head-lora-36;
-        margin-bottom: 40px;
+      img {
+        vertical-align: bottom;
       }
+
     }
   }
-
 }

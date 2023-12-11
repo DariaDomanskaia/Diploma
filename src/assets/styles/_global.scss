@@ -27,20 +27,20 @@ html, body {
     font-family: Montserrat-400, sans-serif;
   }
 }
-
-/*
-
 .input {
   border-radius: 3px;
-  border: 2px solid #2A592E;
+  border: 1px solid $blue-text-color;
+  padding: 20px;
   box-sizing: border-box;
-  padding: 17px 20px;
-
-  font-family: 'Montserrat Regular', sans-serif;
+  font-family: Montserrat-400, sans-serif;
   font-size: 14px;
-  color: $grey-text-color;
+
+  &::placeholder {
+    color: #A8ABA7;
+  }
 
 }
+/*
 
 .button {
   border-radius: 5px;
