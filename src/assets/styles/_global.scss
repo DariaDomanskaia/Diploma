@@ -26,6 +26,11 @@ html, body {
     font-size: 16px;
     font-family: Montserrat-400, sans-serif;
   }
+
+  &:disabled {
+    background: grey;
+    cursor: not-allowed;
+  }
 }
 .input {
   border-radius: 3px;
@@ -33,7 +38,8 @@ html, body {
   padding: 20px;
   box-sizing: border-box;
   font-family: Montserrat-400, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+  outline: none !important;
 
   &::placeholder {
     color: #A8ABA7;

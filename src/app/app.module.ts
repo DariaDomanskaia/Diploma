@@ -11,6 +11,9 @@ import {ShareModule} from "./share/share.module";
 import { MainComponent } from './views/main/main.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CarouselModule} from "ngx-owl-carousel-o";
+import {HttpClientModule} from "@angular/common/http";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 @NgModule({
@@ -27,6 +30,9 @@ import {CarouselModule} from "ngx-owl-carousel-o";
     AppRoutingModule,
     RouterModule,
     ShareModule,
+    MatSnackBarModule,
+    MatMenuModule,
+    HttpClientModule,
     CarouselModule,
     BrowserAnimationsModule,
   ],

@@ -5,6 +5,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {ShareModule} from "../../share/share.module";
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import {ReactiveFormsModule} from "@angular/forms";
   ],
   imports: [
     CommonModule,
-    UserRoutingModule,
+    ShareModule,
     ReactiveFormsModule,
     UserRoutingModule
   ]
