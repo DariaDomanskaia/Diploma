@@ -1,0 +1,18 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
+.login {
+
+  .container {
+    display: flex;
+
+    .auth-form {
+
+      .auth-title {
+        @include head-lora-36;
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+}
