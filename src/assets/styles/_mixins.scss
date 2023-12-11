@@ -12,3 +12,9 @@
   font-family: Montserrat-500, sans-serif;
   font-size: 20px;
   }
+
+@mixin head-lora-36 {
+  color: $blue-text-color;
+  font-family: "Lora-400", sans-serif;
+  font-size: 36px;
+}

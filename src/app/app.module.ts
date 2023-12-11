@@ -12,13 +12,14 @@ import { MainComponent } from './views/main/main.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CarouselModule} from "ngx-owl-carousel-o";
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    MainComponent,
+    MainComponent
 
   ],
   imports: [
