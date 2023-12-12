@@ -30,7 +30,8 @@ export class LoginComponent {
     if (this.loginForm.valid &&
       this.loginForm.value.email &&
       this.loginForm.value.password) {
-      this.authService.login(this.loginForm.value.email, this.loginForm.value.password, !!this.loginForm.value.rememberMe)
+      this.authService.login(this.loginForm.value.email,
+        this.loginForm.value.password, !!this.loginForm.value.rememberMe)
         .subscribe({
           next: (data : DefaultResponseType | LoginResponseType) => {
             let error = null;
@@ -61,7 +62,7 @@ export class LoginComponent {
               this._snackBar.open('Ошибка авторизации');
             }
           }
-        })
+        });
     }
   }
 }

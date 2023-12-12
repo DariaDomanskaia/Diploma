@@ -2,6 +2,7 @@
 @import "mixins";
 
 .auth-form {
+  font-family: Montserrat-400, sans-serif;
 
   .auth-title {
     @include head-lora-36;
@@ -31,9 +32,8 @@
 
       label {
         line-height: 130%;
-        margin-left: 10px;
+        margin-left: 8px;
         color: $main-text-color;
-        font-family: Montserrat-400, sans-serif;
         font-size: 14px;
 
         a {
@@ -50,7 +50,7 @@
   }
 
   .auth-button {
-    margin-top: 40px;
+    //margin-top: 40px;
 
     .btn-auth {
       padding: 15px 40px;
