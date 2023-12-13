@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
+import {ArticleService} from "../../share/sarvices/article.service";
+import {ArticleType} from "../../../types/article.type";
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export class MainComponent implements OnInit{
+
+  articleService = inject(ArticleService);
+
   customOptions: OwlOptions = {
     items: 1,
     loop: true,
@@ -84,4 +89,14 @@ export class MainComponent {
       text: 'Команда АйтиШторма за такой короткий промежуток времени сделала невозможное: от простой фирмы по услуге продвижения выросла в мощный блог о важности личного бренда. Класс!'
     },
   ];
+
+  articles: ArticleType[] = [];
+  isLogged: boolean = false;
+
+  ngOnInit(): void {
+    this.articleService.getPopularArticles()
+      .subscribe((data: ArticleType[]) => {
+        this.articles = data;
+      });
+  }
 }

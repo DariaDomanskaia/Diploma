@@ -155,44 +155,8 @@
   <div class="container">
     <div class="popular-articles-heading">Популярные статьи из блога</div>
     <div class="popular-articles-items">
-      <div class="article">
-        <div class="article-image" style="background-image: url('assets/images/example.png')"></div>
-        <div class="article-tag">Фриланс</div>
-        <div class="article-title">6 сайтов для повышения продуктивности</div>
-        <div class="article-description">Хотите проводить время в сети с пользой? Наша подборка из шести полезных, но
-          малоизвестных сайтов увеличит вашу продуктивность, поможет успевать больше в течение дня и всегда быть на шаг
-          впереди! Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </div>
-        <a class="article-action" href="#">Читать дальше</a>
-      </div>
-      <div class="article">
-        <div class="article-image" style="background-image: url('assets/images/example.png')"></div>
-        <div class="article-tag">Фриланс</div>
-        <div class="article-title">6 сайтов для повышения продуктивности</div>
-        <div class="article-description">Хотите проводить время в сети с пользой? Наша подборка из шести полезных, но
-          малоизвестных сайтов увеличит вашу продуктивность, поможет успевать больше в течение дня и всегда быть на шаг
-          впереди!
-        </div>
-        <a class="article-action" href="#">Читать дальше</a>
-      </div>
-      <div class="article">
-        <div class="article-image" style="background-image: url('assets/images/example.png')"></div>
-        <div class="article-tag">Фриланс</div>
-        <div class="article-title">6 сайтов для повышения продуктивности</div>
-        <div class="article-description">Хотите проводить время в сети с пользой? Наша подборка из шести полезных, но
-          малоизвестных сайтов увеличит вашу продуктивность.
-        </div>
-        <a class="article-action" href="#">Читать дальше</a>
-      </div>
-      <div class="article">
-        <div class="article-image" style="background-image: url('assets/images/example.png')"></div>
-        <div class="article-tag">Фриланс</div>
-        <div class="article-title">6 сайтов для повышения продуктивности</div>
-        <div class="article-description">Хотите проводить время в сети с пользой? Наша подборка из шести полезных, но
-          малоизвестных сайтов увеличит вашу продуктивность, поможет успевать больше в течение дня и всегда быть на шаг
-          впереди!
-        </div>
-        <a class="article-action" href="#">Читать дальше</a>
+      <div *ngFor="let article of articles">
+        <article-card [article]="article"></article-card>
       </div>
     </div>
     <div class="popular-articles-action">
@@ -304,3 +268,13 @@
     </div>
   </div>
 </section>
+
+<div class="consultation-request">
+  <div class="close-tag"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="1.93562" y1="2.6499" x2="13.9564" y2="14.6707" stroke="#BEBEBE" stroke-linecap="round"/>
+    <line x1="13.9236" y1="2.62971" x2="1.90277" y2="14.6505" stroke="#BEBEBE" stroke-linecap="round"/>
+  </svg>
+  </div>
+  <div class="request-heading">Закажите бесплатную консультацию!</div>
+  
+</div>
