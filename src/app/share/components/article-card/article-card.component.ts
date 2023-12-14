@@ -14,9 +14,5 @@ export class ArticleCardComponent {
   serverStaticPath: string = environment.serverStaticPath;
 
 
-  navigate() {
-/*    if (this.isLight){
-      this.router.navigate(['/product/' + this.product.url]);
-    }*/
-  }
+
 }

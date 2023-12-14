@@ -1,0 +1,103 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+.wrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  z-index: 99;
+  background-color: rgba(0,0,0,0.5);
+
+  .consultation-request {
+    width: 727px;
+    //height: 489px;
+    border-radius: 10px;
+    border: 1px solid #709FDC;
+    box-sizing: border-box;
+    background: #FFF;
+    padding: 94px 94px 86px 94px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: calc(50% - 350px);
+    top: calc(50% - 250px);
+
+    &.thanks {
+      padding: 163px 142px;
+    }
+
+
+    .close-tag {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      cursor: pointer;
+    }
+
+
+
+    .request-form {
+
+      .request-heading {
+        width: 411px;
+        @include head-lora-38;
+        line-height: 130%;
+        margin-bottom: 20px;
+        text-align: center;
+
+        &.thanks-heading {
+          width: 450px;
+        }
+      }
+
+      .form-input {
+        width: 422px;
+        margin-bottom: 5px;
+
+
+        input {
+          width: 100%;
+        }
+
+        select {
+          width: 100%;
+          appearance: none;
+          cursor: pointer;
+          color: $blue-text-color;
+        }
+      }
+
+      .btn-order {
+        width: 422px;
+        padding: 15px;
+        color: #FFF;
+        font-family: Montserrat-400, sans-serif;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+
+      .thanks-btn {
+        padding: 10px 20px;
+      }
+
+      .thanks-text {
+        color: #1E1A2B;
+        text-align: center;
+        font-family: Montserrat-500, sans-serif;
+        font-size: 14px;
+        margin-bottom: 40px;
+      }
+
+      .thanks-action {
+        text-align: center;
+      }
+
+    }
+
+
+
+
+  }
+}

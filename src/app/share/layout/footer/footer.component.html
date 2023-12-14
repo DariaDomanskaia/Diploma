@@ -24,7 +24,7 @@
       <div class="info">
         <div class="info-title">Телефон</div>
         <a class="info-text phone" href="tel:+74993431334">+7 (499) 343-13-34</a>
-        <button class="btn call-back">Перезвоните мне</button>
+        <button class="btn call-back" (click)="showModal()">Перезвоните мне</button>
       </div>
       <div class="info">
         <div class="info-title">E-mail</div>
@@ -57,3 +57,52 @@
     </div>
   </div>
 </footer>
+
+<div class="wrap" *ngIf="isConsultationForm">
+  <div class="consultation-request">
+    <div class="close-tag" (click)="closeModal()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="1.93562" y1="2.6499" x2="13.9564" y2="14.6707" stroke="#BEBEBE" stroke-linecap="round"/>
+        <line x1="13.9236" y1="2.62971" x2="1.90277" y2="14.6505" stroke="#BEBEBE" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="request-form" [formGroup]="consultationForm">
+      <div class="request-heading">
+        Закажите бесплатную консультацию!
+      </div>
+      <div class="form-input">
+        <input type="text" class="input"
+               [ngStyle]="{'border-color': consultationForm.get('name')?.invalid
+                 && (consultationForm.get('name')?.dirty || consultationForm.get('name')?.touched) ? 'red' : ''}"
+               placeholder="Ваше имя" formControlName="name">
+      </div>
+      <div class="form-input">
+        <input type="text" class="input"
+               [ngStyle]="{'border-color': consultationForm.get('phone')?.invalid
+               && (consultationForm.get('phone')?.dirty || consultationForm.get('phone')?.touched) ? 'red' : ''}"
+               placeholder="Ваш номер телефона" formControlName="phone">
+      </div>
+      <button class="btn btn-order" [disabled]="consultationForm.invalid" (click)="sendConsultationForm()">Заказать консультацию</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" *ngIf="isThanksPage">
+  <div class="consultation-request thanks">
+    <div class="close-tag" (click)="closeModal()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="1.93562" y1="2.6499" x2="13.9564" y2="14.6707" stroke="#BEBEBE" stroke-linecap="round"/>
+        <line x1="13.9236" y1="2.62971" x2="1.90277" y2="14.6505" stroke="#BEBEBE" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="request-form">
+      <div class="request-heading thanks-heading">
+        Спасибо за вашу заявку!
+      </div>
+      <div class="thanks-text">Мы свяжемся с вами при первой же возможности.</div>
+      <div class="thanks-action">
+        <button class="btn thanks-btn" (click)="closeModal()">Окей</button>
+      </div>
+    </div>
+  </div>
+</div>

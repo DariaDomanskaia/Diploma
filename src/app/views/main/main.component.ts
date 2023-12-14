@@ -2,15 +2,23 @@ import {Component, inject, OnInit} from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {ArticleService} from "../../share/sarvices/article.service";
 import {ArticleType} from "../../../types/article.type";
+import {FormBuilder, Validators} from "@angular/forms";
+import {RequestsService} from "../../share/sarvices/requests.service";
+import {DefaultResponseType} from "../../../types/default-response.type";
+import {MatSnackBar} from "@angular/material/snack-bar";
+
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit{
+export class MainComponent implements OnInit {
 
   articleService = inject(ArticleService);
+  fb = inject(FormBuilder);
+  requestService = inject(RequestsService);
+  _snackBar = inject(MatSnackBar);
 
   customOptions: OwlOptions = {
     items: 1,
@@ -26,15 +34,9 @@ export class MainComponent implements OnInit{
     navSpeed: 1200,
     navText: ['', ''],
     responsive: {
-      0: {
-
-      },
-      400: {
-
-      },
-      800: {
-
-      }
+      0: {},
+      400: {},
+      800: {}
     },
     nav: false
   }
@@ -60,6 +62,18 @@ export class MainComponent implements OnInit{
     },
     nav: false
   }
+  applicationForm = this.fb.group({
+    service: [''],
+    name: ['', [Validators.required, Validators.pattern(/^([А-Я][а-я]{3,}) ([А-Я][а-я]{3,})$/)]],
+    phone: ['', [Validators.required, Validators.maxLength(11)]]
+  });
+
+  selectValues = {
+    first: 'Создание сайтов',
+    second: 'Продвижение',
+    third: 'Реклама',
+    fourth: 'Копирайтинг'
+  };
 
   banners = [
     {
@@ -90,6 +104,9 @@ export class MainComponent implements OnInit{
     },
   ];
 
+  isApplicationForm: boolean = false;
+  isThanksPage: boolean = false;
+
   articles: ArticleType[] = [];
   isLogged: boolean = false;
 
@@ -98,5 +115,33 @@ export class MainComponent implements OnInit{
       .subscribe((data: ArticleType[]) => {
         this.articles = data;
       });
+  }
+
+
+  sendApplicationForm(): void {
+    if (this.applicationForm.valid &&
+      this.applicationForm.value.service &&
+      this.applicationForm.value.name &&
+      this.applicationForm.value.phone) {
+      this.requestService.consultationRequest(this.applicationForm.value.name, this.applicationForm.value.phone, this.applicationForm.value.service, 'order')
+        .subscribe((data: DefaultResponseType) => {
+          if (!data.error) {
+            this.isApplicationForm = false;
+            this.isThanksPage = true;
+          }
+          this._snackBar.open(data.message);
+        });
+    }
+
+  }
+
+  showModal(): void {
+
+    this.isApplicationForm = true;
+  }
+
+  closeModal(): void {
+    this.isApplicationForm = false;
+    this.isThanksPage = false;
   }
 }

@@ -1,5 +1,6 @@
 @import "../../../assets/styles/variables";
 @import "../../../assets/styles/mixins";
+@import "../../../assets/styles/cons-form";
 
 .main-banners {
 
@@ -201,8 +202,6 @@
     .popular-articles-items {
       display: flex;
 
-
-
     }
     .popular-articles-action {
       position: absolute;
@@ -341,4 +340,7 @@
     }
   }
 }
+
+
+
 
