@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ArticleType} from "../../../types/article.type";
 import {environment} from "../../../environments/environment";
+import {ActiveParamsType} from "../../../types/active-params.type";
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,10 @@ export class ArticleService {
     return this.http.get<ArticleType[]>(environment.api + 'articles/top');
   }
 
+  getAllArticles(params: ActiveParamsType): Observable<{count: number, number, pages: number, items: ArticleType[]}> {
+    return this.http.get<{count: number, pages: number, items: ArticleType[]}>(environment.api + 'products', {
+      params: params
+    });
+  }
 
 }

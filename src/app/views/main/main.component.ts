@@ -1,9 +1,9 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
-import {ArticleService} from "../../share/sarvices/article.service";
+import {ArticleService} from "../../share/services/article.service";
 import {ArticleType} from "../../../types/article.type";
 import {FormBuilder, Validators} from "@angular/forms";
-import {RequestsService} from "../../share/sarvices/requests.service";
+import {RequestsService} from "../../share/services/requests.service";
 import {DefaultResponseType} from "../../../types/default-response.type";
 import {MatSnackBar} from "@angular/material/snack-bar";
 

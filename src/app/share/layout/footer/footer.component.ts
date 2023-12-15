@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {RequestsService} from "../../sarvices/requests.service";
+import {RequestsService} from "../../services/requests.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 

@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {UserService} from "../../sarvices/user.service";
+import {UserService} from "../../services/user.service";
 import {UserInfoType} from "../../../../types/user-info.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {AuthService} from "../../../core/auth/auth.service";
