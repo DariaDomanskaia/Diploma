@@ -15,6 +15,7 @@
       display: flex;
       align-items: baseline; //выравнивание по первой строке
       justify-content: space-between;
+      margin-bottom: 40px;
 
       .blog-applied-filters {
         display: flex;
@@ -26,9 +27,12 @@
           padding: 8px 20px;
           font-size: 16px;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           margin-right: 20px;
           margin-bottom: 20px;
+          color: #709FDC;
+          font-family: Montserrat-400, sans-serif;
+
 
           a {
             text-decoration: none;
@@ -64,9 +68,11 @@
           padding: 12px 23px;
           border-radius: 0 0 5px 5px;
           border: 1px solid $footer-bg-color;
+          box-sizing: border-box;
           background: #FFF;
           color: #BEBEBE;
           font-size: 16px;
+          display: none;
 
           .blog-sorting-item {
             margin-bottom: 14px;
@@ -81,18 +87,20 @@
             }
           }
         }
+
         &.open {
           width: 257px;
           max-width: 257px;
-          .catalog-sorting-head {
-            color: $footer-bg-color;
+
+          .blog-sorting-head {
+            padding: 12px 23px;
             border-radius: 5px 5px 0 0;
-            background: #EBEBEB;
-            padding-right: 23px;
+            background: $footer-bg-color;
+            box-sizing: border-box;
             font-size: 16px;
           }
 
-          .catalog-sorting-body {
+          .blog-sorting-body {
             display: block;
           }
         }
@@ -103,11 +111,10 @@
       display: flex;
       margin-top: 10px;
 
-
       .blog-articles {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 26px 30px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px 24px;
       }
     }
 

@@ -60,7 +60,12 @@ header.header {
       .header-content-actions {
         display: flex;
         align-items: center;
-
+        text-decoration: none;
+        color: $main-text-color;
+        &.text:active, /* активная/посещенная ссылка */
+        &.text:hover {
+           text-decoration: none !important;
+        }
         a {
           margin-right: 7px;
           cursor: pointer;

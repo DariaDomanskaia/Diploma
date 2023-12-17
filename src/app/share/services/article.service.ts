@@ -16,8 +16,8 @@ export class ArticleService {
     return this.http.get<ArticleType[]>(environment.api + 'articles/top');
   }
 
-  getAllArticles(params: ActiveParamsType): Observable<{count: number, number, pages: number, items: ArticleType[]}> {
-    return this.http.get<{count: number, pages: number, items: ArticleType[]}>(environment.api + 'products', {
+  getAllArticles(params: ActiveParamsType): Observable<{count: number, pages: number, items: ArticleType[]}> {
+    return this.http.get<{count: number, pages: number, items: ArticleType[]}>(environment.api + 'articles', {
       params: params
     });
   }
