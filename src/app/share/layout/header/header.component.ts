@@ -3,6 +3,8 @@ import {UserService} from "../../services/user.service";
 import {UserInfoType} from "../../../../types/user-info.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {AuthService} from "../../../core/auth/auth.service";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-header',
@@ -13,6 +15,8 @@ export class HeaderComponent implements OnInit {
 
   userService = inject(UserService);
   authService = inject(AuthService);
+  router = inject(Router);
+  _snackBar = inject(MatSnackBar);
 
   userName: string | null = null;
   isLogged: boolean = false;
@@ -24,7 +28,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isLogged$.subscribe((isLoggedIn: boolean) => {
       this.isLogged = isLoggedIn;
+      this.getUserName();
     });
+
     this.getUserName();
   }
 
@@ -39,8 +45,24 @@ export class HeaderComponent implements OnInit {
           this.userName = userInfo.name.split(' ', )[0];
         }
       });
-
   }
 
+  logout(): void {
+    this.authService.logout()
+      .subscribe({
+        next: () => {
+          this.doLogout();
+        },
+        error: () => {
+          this.doLogout();
+        }
+      })
+  }
 
+  doLogout(): void {
+    this.authService.removeTokens();
+    this.authService.userId = null;
+    this._snackBar.open('Выход из системы выполнен');
+    this.router.navigate(['/']);
+  }
 }

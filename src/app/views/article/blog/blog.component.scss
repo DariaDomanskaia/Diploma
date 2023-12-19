@@ -77,6 +77,9 @@
           .blog-sorting-item {
             margin-bottom: 14px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
             &:last-child {
               margin-bottom: 0;

@@ -3,6 +3,7 @@ import {ArticleService} from "../../../share/services/article.service";
 import {ActivatedRoute} from "@angular/router";
 import {ArticleType} from "../../../../types/article.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-article-page',
@@ -13,8 +14,11 @@ export class ArticlePageComponent implements OnInit{
 
   activatedRout = inject(ActivatedRoute);
   articleService = inject(ArticleService);
+
   article!: ArticleType;
   relatedArticles: ArticleType[] = [];
+  serverStaticPath: string = environment.serverStaticPath;
+
 
   ngOnInit(): void {
     this.activatedRout.params.subscribe(param => {

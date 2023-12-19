@@ -1,9 +1,12 @@
+
 <div class="article-page">
   <div class="container">
     <div class="article-body">
-      <div class="article-text"></div>
-      <div class="article-image">{{article.image}}</div>
-      {{article.text}}
+      <div class="article-text" [innerHTML]="article.text">
+
+      </div>
+      <div class="article-image" style="background-image: url({{serverStaticPath + article.image}})"></div>
+
     </div>
     <div class="recommended-articles"></div>
     <div class="share-article">

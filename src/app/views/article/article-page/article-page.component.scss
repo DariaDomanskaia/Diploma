@@ -7,5 +7,12 @@
 
   .container {
 
+    .article-image {
+      border-radius: 5px;
+      max-width: 527px;
+      height: 320px;
+      background-position: center;
+      background-size: cover;
+    }
   }
 }
