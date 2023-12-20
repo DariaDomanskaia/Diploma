@@ -78,7 +78,6 @@
 
       .article-comments-title {
         @include head-lora-38;
-        margin-bottom: 20px;
       }
 
       .article-comments-login {
@@ -86,6 +85,7 @@
         font-family: Montserrat-400, sans-serif;
         font-size: 14px;
         margin-bottom: 60px;
+        margin-top: 20px;
 
         a {
           color: $blue-text-color;
@@ -93,8 +93,18 @@
         }
       }
 
+      .article-first-comment-text {
+        color: $main-text-color;
+        font-family: Montserrat-400, sans-serif;
+        font-size: 14px;
+        margin-top: 20px;
+      }
+
       .article-comments-text-area {
         margin-bottom: 20px;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
 
         textarea {
           resize: none;
@@ -115,6 +125,13 @@
           &:focus {
             outline: none !important;
           }
+        }
+
+        .comment-btn {
+          margin-top: 20px;
+          width: 422px;
+          padding: 15px 40px;
+          align-items: center;
         }
       }
     }
