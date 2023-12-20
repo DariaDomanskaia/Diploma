@@ -8,11 +8,11 @@
         <div class="header-menu">
           <nav>
             <ul>
-              <li class="active"><a>Услуги</a></li>
-              <li><a>О нас</a></li>
-              <li><a>Статьи</a></li>
-              <li><a>Отзывы</a></li>
-              <li><a>Контакты</a></li>
+              <li class="active"><a routerLink="/" fragment="offer">Услуги</a></li>
+              <li><a routerLink="/" fragment="about">О нас</a></li>
+              <li><a routerLink="/articles">Статьи</a></li>
+              <li><a routerLink="/" fragment="review">Отзывы</a></li>
+              <li><a routerLink="/" fragment="contacts">Контакты</a></li>
             </ul>
           </nav>
         </div>
@@ -45,7 +45,6 @@
             <span (click)="logout()">Выйти</span>
           </button>
         </mat-menu>
-
     </a>
     </div>
   </div>

@@ -4,5 +4,30 @@
 @import "global";
 @import "mixins";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Montserrat-500, sans-serif;
+
+  h1 {
+    color: $blue-text-color !important;
+    font-family: Lora-400, sans-serif !important;
+    font-size: 38px !important;
+    max-width: 607px;
+    line-height: 130% !important;
+    margin-bottom: 40px !important;
+  }
+
+  h3 {
+    color: $blue-text-color !important;
+    font-family: Montserrat-500, sans-serif !important;
+    font-size: 20px !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+
+

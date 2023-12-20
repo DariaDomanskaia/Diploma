@@ -7,12 +7,118 @@
 
   .container {
 
-    .article-image {
-      border-radius: 5px;
-      max-width: 527px;
-      height: 320px;
-      background-position: center;
-      background-size: cover;
+    .article-crumbs {
+      margin-bottom: 60px;
+      font-size: 16px;
+      color: $blue-text-color;
+      font-family: Montserrat-500, sans-serif;
+
+
+      a, span {
+        font-family: Montserrat-400, sans-serif;
+        color: $footer-bg-color;
+        text-decoration: none;
+
+      }
+    }
+
+    .article-body {
+
+      .article-text {
+
+
+
+        p {
+          color: $main-text-color;
+          font-family: Montserrat-400, sans-serif;
+          font-size: 14px;
+          line-height: 130%;
+        }
+      }
+
+      .article-image {
+        float: right;
+        border-radius: 5px;
+        max-width: 527px;
+        height: 320px;
+        background-position: center;
+        background-size: cover;
+        margin-left: 106px;
+      }
+    }
+
+    .share-article {
+      margin-top: 60px;
+      margin-bottom: 60px;
+      display: flex;
+
+
+
+      .share-title {
+        color: $blue-text-color;
+        font-family: Montserrat-500, sans-serif;
+        font-size: 14px;
+
+      }
+
+      .share-social-icons {
+        margin-left: 20px;
+
+        a {
+          margin-left: 13px;
+          &:first-child{
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
+    .articles-comments {
+
+
+      .article-comments-title {
+        @include head-lora-38;
+        margin-bottom: 20px;
+      }
+
+      .article-comments-login {
+        color: $main-text-color;
+        font-family: Montserrat-400, sans-serif;
+        font-size: 14px;
+        margin-bottom: 60px;
+
+        a {
+          color: $blue-text-color;
+          text-decoration: none;
+        }
+      }
+
+      .article-comments-text-area {
+        margin-bottom: 20px;
+
+        textarea {
+          resize: none;
+          width: 818px;
+          height: 248px;
+          padding: 20px 64px 20px 20px;
+          border-radius: 3px;
+          border: 1.5px solid #709FDC;
+          box-sizing: border-box;
+          font-family: Montserrat-400, sans-serif;
+          font-size: 14px;
+
+          &::placeholder {
+            color: #A8ABA7;
+            line-height: 130%;
+          }
+
+          &:focus {
+            outline: none !important;
+          }
+        }
+      }
     }
   }
 }
+
+
