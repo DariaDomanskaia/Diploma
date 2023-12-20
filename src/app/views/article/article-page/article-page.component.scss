@@ -132,6 +132,81 @@
           width: 422px;
           padding: 15px 40px;
           align-items: center;
+          font-family: Montserrat-400, sans-serif;
+          font-size: 16px;
+          margin-bottom: 60px;
+        }
+      }
+
+      .comments-items {
+
+        .comment-item {
+          max-width: 854px;
+
+          .comment-item-user {
+            display: flex;
+            margin-bottom: 15px;
+
+            .item-user-avatar {
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              border: 1px solid $blue-text-color;
+              box-sizing: border-box;
+              background-color: #B9D5FD;
+              position: relative;
+
+              img {
+                position: absolute;
+                top: 5px;
+                left: 7px;
+              }
+            }
+
+            .item-user-info {
+              margin-left: 26px;
+
+              .user-info-name {
+                color: #709FDC;
+                font-family: Montserrat-600, sans-serif;
+                font-size: 18px;
+                margin-bottom: 10px;
+
+              }
+
+              .user-info-date {
+                color: #BEBEBE;
+                font-family: Montserrat-600, sans-serif;
+                font-size: 14px;
+
+              }
+            }
+
+          }
+
+          .comment-item-text {
+            color: $main-text-color;
+            font-family: Montserrat-400, sans-serif;
+            font-size: 14px;
+            line-height: 140%;
+          }
+
+          .comment-reactions {
+            margin-top: 39px;
+            display: flex;
+
+            .like, .dislike, .spam {
+              display: flex;
+              align-items: end;
+            }
+
+            .like {
+              margin-right: 15px;
+            }
+            .dislike {
+              margin-right: 15px;
+            }
+          }
         }
       }
     }
