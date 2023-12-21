@@ -6,6 +6,7 @@
   padding-bottom: 120px;
 
   .container {
+    position: relative;
 
     .article-crumbs {
       margin-bottom: 60px;
@@ -22,16 +23,25 @@
       }
     }
 
-    .article-body {
+    .article-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 60px;
 
-      .article-text {
+      .wrap {
+        max-width: 607px;
 
+        .article-title {
+          color: $blue-text-color;
+          @include head-lora-38;
+          line-height: 130%;
+          margin-bottom: 40px;
+        }
 
-
-        p {
-          color: $main-text-color;
+        .article-description {
+          color: $blue-text-color;
           font-family: Montserrat-400, sans-serif;
-          font-size: 14px;
+          font-size: 20px;
           line-height: 130%;
         }
       }
@@ -44,14 +54,45 @@
         background-position: center;
         background-size: cover;
         margin-left: 106px;
+        margin-bottom: 60px;
       }
     }
+
+    .article-body {
+      display: flex;
+      justify-content: space-between;
+
+      .article-text {
+        max-width: 818px;
+
+        p {
+          color: $main-text-color;
+          font-family: Montserrat-400, sans-serif;
+          font-size: 14px;
+          line-height: 130%;
+        }
+      }
+
+      .recommended-articles {
+       /* position: absolute;
+        right: 0;
+        top: 450px;*/
+
+        .recommended-title {
+          color: $blue-text-color;
+          font-family: Lora-400, sans-serif;
+          font-size: 26px;
+          margin-bottom: 20px;
+        }
+
+      }
+    }
+
 
     .share-article {
       margin-top: 60px;
       margin-bottom: 60px;
       display: flex;
-
 
 
       .share-title {
@@ -66,7 +107,8 @@
 
         a {
           margin-left: 13px;
-          &:first-child{
+
+          &:first-child {
             margin-left: 0;
           }
         }
@@ -151,7 +193,7 @@
               width: 60px;
               height: 60px;
               border-radius: 50%;
-              border: 1px solid $blue-text-color;
+              border: 1px solid #4787DBFF;
               box-sizing: border-box;
               background-color: #B9D5FD;
               position: relative;
@@ -198,14 +240,33 @@
             .like, .dislike, .spam {
               display: flex;
               align-items: end;
+
+              span {
+                margin-right: 3px;
+              }
             }
 
             .like {
               margin-right: 15px;
             }
+
             .dislike {
               margin-right: 15px;
             }
+          }
+
+          .more-comments {
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            color: $blue-text-color;
+            font-family: Montserrat-500, sans-serif;
+            font-size: 20px;
+
+            svg {
+              margin-left: 10px;
+            }
+
           }
         }
       }

@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ArticleType} from "../../../../types/article.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {environment} from "../../../../environments/environment";
+import {AuthService} from "../../../core/auth/auth.service";
 
 @Component({
   selector: 'app-article-page',
@@ -14,13 +15,17 @@ export class ArticlePageComponent implements OnInit{
 
   activatedRout = inject(ActivatedRoute);
   articleService = inject(ArticleService);
+  authService = inject(AuthService);
+  serverStaticPath: string = environment.serverStaticPath;
 
   article!: ArticleType;
   relatedArticles: ArticleType[] = [];
-  serverStaticPath: string = environment.serverStaticPath;
+  isLogged: boolean = false;
+
 
 
   ngOnInit(): void {
+    this.isLogged = this.authService.getIsLoggedIn();
     this.activatedRout.params.subscribe(param => {
       this.articleService.getArticle(param['url'])
         .subscribe((data: ArticleType) => {

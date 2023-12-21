@@ -1,11 +1,24 @@
 <div class="article-page">
   <div class="container">
     <div class="article-crumbs"><a routerLink="/articles">Блог</a><span> / </span>{{article.title}}</div>
-    <div class="article-body">
+
+    <div class="article-header">
+      <div class="wrap">
+        <div class="article-title">{{article.title}}</div>
+        <div class="article-description">{{article.description}}</div>
+      </div>
       <img class="article-image" src="{{serverStaticPath + article.image}}">
-      <div class="article-text" [innerHTML]="article.text"></div>
     </div>
-    <div class="recommended-articles"></div>
+    <div class="article-body">
+      <div class="article-text" [innerHTML]="article.text"></div>
+      <div class="recommended-articles">
+        <div class="recommended-title">Читайте также:</div>
+        <article-card [article]="article" *ngFor="let article of relatedArticles"></article-card>
+      </div>
+    </div>
+
+
+
     <div class="share-article">
       <div class="share-title">Понравилась статья? Поделитесь ею в своих социальных сетях!</div>
       <div class="share-social-icons">
@@ -56,12 +69,12 @@
     </div>
     <div class="articles-comments">
       <div class="article-comments-title">Комментарии к статье</div>
-      <div class="article-comments-login">
+      <div class="article-comments-login" *ngIf="!isLogged">
         Чтобы оставлять комментарии, <a routerLink="/login">войдите</a> или <a
         routerLink="/signup">зарегистрируйтесь</a>.
       </div>
       <div class="article-first-comment-text">Будьте первым, кто оставит свой комментарий к статье!</div>
-      <div class="article-comments-text-area">
+      <div class="article-comments-text-area" *ngIf="isLogged">
         <textarea name="comment" id="comment"
                   placeholder="Напишите Ваш комментарий к статье..."></textarea>
         <button class="btn comment-btn">Опубликовать комментарий</button>
