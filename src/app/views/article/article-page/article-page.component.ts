@@ -5,6 +5,7 @@ import {ArticleType} from "../../../../types/article.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {environment} from "../../../../environments/environment";
 import {AuthService} from "../../../core/auth/auth.service";
+import {CommentsService} from "../../../share/services/comments.service";
 
 @Component({
   selector: 'app-article-page',
@@ -16,6 +17,7 @@ export class ArticlePageComponent implements OnInit{
   activatedRout = inject(ActivatedRoute);
   articleService = inject(ArticleService);
   authService = inject(AuthService);
+  commentsService = inject(CommentsService);
   serverStaticPath: string = environment.serverStaticPath;
 
   article!: ArticleType;
@@ -43,6 +45,8 @@ export class ArticlePageComponent implements OnInit{
               }
 
             });
+
+
           /*if (this.authService.getIsLoggedIn()) {
 
             this.favoriteService.getFavorites()
