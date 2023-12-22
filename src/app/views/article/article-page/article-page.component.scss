@@ -184,6 +184,7 @@
 
         .comment-item {
           max-width: 854px;
+          margin-bottom: 40px;
 
           .comment-item-user {
             display: flex;
@@ -193,14 +194,14 @@
               width: 60px;
               height: 60px;
               border-radius: 50%;
-              border: 1px solid #4787DBFF;
+              border: 2px solid #4787DBFF;
               box-sizing: border-box;
               background-color: #B9D5FD;
               position: relative;
 
               img {
                 position: absolute;
-                top: 5px;
+                top: 4px;
                 left: 7px;
               }
             }
@@ -239,7 +240,7 @@
 
             .like, .dislike, .spam {
               display: flex;
-              align-items: end;
+              align-items: flex-end;
 
               span {
                 margin-right: 3px;

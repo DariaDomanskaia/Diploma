@@ -6,6 +6,8 @@ import {DefaultResponseType} from "../../../../types/default-response.type";
 import {environment} from "../../../../environments/environment";
 import {AuthService} from "../../../core/auth/auth.service";
 import {CommentsService} from "../../../share/services/comments.service";
+import {FormBuilder, Validators} from "@angular/forms";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-article-page',
@@ -18,11 +20,18 @@ export class ArticlePageComponent implements OnInit{
   articleService = inject(ArticleService);
   authService = inject(AuthService);
   commentsService = inject(CommentsService);
+  fb = inject(FormBuilder);
+  _snackBar = inject(MatSnackBar);
   serverStaticPath: string = environment.serverStaticPath;
 
   article!: ArticleType;
   relatedArticles: ArticleType[] = [];
+  commentsCount: number = 0;
   isLogged: boolean = false;
+  commentForm = this.fb.group({
+    comment: ['', Validators.required]
+  });
+
 
 
 
@@ -66,7 +75,28 @@ export class ArticlePageComponent implements OnInit{
     });
   }
 
+ getComments(countOfComments: number, articleId: string) {
+    this.commentsService.getComments(countOfComments, articleId)
+      .subscribe(comments => {
+        this.article.commentsCount = comments.allCount;
+        this.article.comments = comments.comments;
+      })
+ }
 
 
+  sendComment(){
+    if (this.commentForm.valid && this.article.id && this.commentForm.value.comment){
+      this.commentsService.addComment(this.commentForm.value.comment, this.article.id)
+        .subscribe(response => {
+          if (response.error) {
+            console.log(this.article.id);
+            throw new Error(response.message);
+          }
+          this._snackBar.open(response.message);
+          this.getComments(this.commentsCount, this.article.id);
+        });
 
+    }
+
+  }
 }
