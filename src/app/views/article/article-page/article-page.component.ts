@@ -89,7 +89,6 @@ export class ArticlePageComponent implements OnInit{
       this.commentsService.addComment(this.commentForm.value.comment, this.article.id)
         .subscribe(response => {
           if (response.error) {
-            console.log(this.article.id);
             throw new Error(response.message);
           }
           this._snackBar.open(response.message);

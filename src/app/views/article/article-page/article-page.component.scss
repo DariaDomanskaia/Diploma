@@ -256,19 +256,20 @@
             }
           }
 
-          .more-comments {
-            margin-top: 60px;
-            display: flex;
-            align-items: center;
-            color: $blue-text-color;
-            font-family: Montserrat-500, sans-serif;
-            font-size: 20px;
 
-            svg {
-              margin-left: 10px;
-            }
+        }
+        .more-comments {
+          margin-top: 60px;
+          display: flex;
+          align-items: center;
+          color: $blue-text-color;
+          font-family: Montserrat-500, sans-serif;
+          font-size: 20px;
 
+          svg {
+            margin-left: 10px;
           }
+
         }
       }
     }

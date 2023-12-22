@@ -74,7 +74,7 @@
         routerLink="/signup">зарегистрируйтесь</a>
       </div>
       <form [formGroup]="commentForm">
-        <div class="article-first-comment-text" *ngIf="!!article.comments">Будьте первым, кто оставит свой комментарий к статье!</div>
+        <div class="article-first-comment-text" *ngIf="!!article.comments && isLogged">Будьте первым, кто оставит свой комментарий к статье!</div>
         <div class="article-comments-text-area" *ngIf="isLogged">
         <textarea name="comment" id="comment"
                   formControlName="comment"
@@ -127,7 +127,7 @@
             </div>
           </div>
         </div>
-        <div class="more-comments">
+        <div class="more-comments" *ngIf="article.commentsCount && article.commentsCount > 3">
           <a class="more-comments-text">Загрузить ещё комментарии</a>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path
