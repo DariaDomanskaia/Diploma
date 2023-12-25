@@ -14,7 +14,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   templateUrl: './article-page.component.html',
   styleUrls: ['./article-page.component.scss']
 })
-export class ArticlePageComponent implements OnInit{
+export class ArticlePageComponent implements OnInit {
 
   activatedRout = inject(ActivatedRoute);
   articleService = inject(ArticleService);
@@ -26,13 +26,11 @@ export class ArticlePageComponent implements OnInit{
 
   article!: ArticleType;
   relatedArticles: ArticleType[] = [];
-  commentsCount: number = 0;
+  commentsCount: number = 10;
   isLogged: boolean = false;
   commentForm = this.fb.group({
     comment: ['', Validators.required]
   });
-
-
 
 
   ngOnInit(): void {
@@ -50,7 +48,7 @@ export class ArticlePageComponent implements OnInit{
 
               const articleDataResponse = articleData as ArticleType[];
               if (articleDataResponse) {
-                 this.relatedArticles = articleDataResponse;
+                this.relatedArticles = articleDataResponse;
               }
 
             });
@@ -75,17 +73,17 @@ export class ArticlePageComponent implements OnInit{
     });
   }
 
- getComments(countOfComments: number, articleId: string) {
+  getComments(countOfComments: number = 3, articleId: string) {
     this.commentsService.getComments(countOfComments, articleId)
       .subscribe(comments => {
         this.article.commentsCount = comments.allCount;
         this.article.comments = comments.comments;
       })
- }
+  }
 
 
-  sendComment(){
-    if (this.commentForm.valid && this.article.id && this.commentForm.value.comment){
+  sendComment() {
+    if (this.commentForm.valid && this.article.id && this.commentForm.value.comment) {
       this.commentsService.addComment(this.commentForm.value.comment, this.article.id)
         .subscribe(response => {
           if (response.error) {
@@ -94,8 +92,10 @@ export class ArticlePageComponent implements OnInit{
           this._snackBar.open(response.message);
           this.getComments(this.commentsCount, this.article.id);
         });
-
     }
+  }
+
+  getReactions() {
 
   }
 }

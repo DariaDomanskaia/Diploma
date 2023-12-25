@@ -1,4 +1,4 @@
-<div class="article-page">
+<div class="article-page" *ngIf="!!article">
   <div class="container">
     <div class="article-crumbs"><a routerLink="/articles">Блог</a><span> / </span>{{article.title}}</div>
 
@@ -16,8 +16,6 @@
         <article-card [article]="article" *ngFor="let article of relatedArticles"></article-card>
       </div>
     </div>
-
-
 
     <div class="share-article">
       <div class="share-title">Понравилась статья? Поделитесь ею в своих социальных сетях!</div>
@@ -70,8 +68,7 @@
     <div class="articles-comments">
       <div class="article-comments-title">Комментарии к статье</div>
       <div class="article-comments-login" *ngIf="!isLogged">
-        Чтобы оставлять комментарии, <a routerLink="/login">войдите</a> или <a
-        routerLink="/signup">зарегистрируйтесь</a>
+        Чтобы оставлять комментарии, <a routerLink="/login">войдите</a> или <a routerLink="/signup">зарегистрируйтесь</a>
       </div>
       <form [formGroup]="commentForm">
         <div class="article-first-comment-text" *ngIf="!!article.comments && isLogged">Будьте первым, кто оставит свой комментарий к статье!</div>
