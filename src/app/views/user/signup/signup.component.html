@@ -9,23 +9,34 @@
           <div class="auth-input">
             <input type="text" class="input"
                    [ngStyle]="{'border-color': signupForm.get('name')?.invalid
-                 && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched) ? 'red' : ''}"
+                   && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched) ? 'red' : ''}"
                    placeholder="Ваше имя" formControlName="name">
+          </div>
+          <div class="error_message" *ngIf="signupForm.get('name')?.invalid
+                   && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)">Имя должно состоять из букв
+            русского алфавита
           </div>
           <input type="text" class="input"
                  [ngStyle]="{'border-color': signupForm.get('email')?.invalid
                  && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched) ? 'red' : ''}"
                  placeholder="Электронная почта" formControlName="email">
         </div>
+        <div class="error_message" *ngIf="signupForm.get('email')?.invalid
+                 && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)">Email адрес введён не верно</div>
         <div class="auth-input">
           <input type="password" class="input"
                  [ngStyle]="{'border-color': signupForm.get('password')?.invalid
                  && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched) ? 'red' : ''}"
                  placeholder="Пароль" formControlName="password">
         </div>
+        <div class="error_message" *ngIf="signupForm.get('password')?.invalid
+                 && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)">Пароль должен быть не менее 8 символов, содержать как минимум 1 букву в верхнем
+          регистре и как минимум 1 цифру
+        </div>
         <div class="auth-checkbox">
           <input type="checkbox" id="agree" formControlName="agree">
-          <label for="agree">Я принимаю<a href="#" class="link"> условия пользовательского соглашения</a> и даю <a href="#" class="link">согласие на обработку персональных данных</a>.</label>
+          <label for="agree">Я принимаю<a href="#" class="link"> условия пользовательского соглашения</a> и даю <a
+            href="#" class="link">согласие на обработку персональных данных</a>.</label>
         </div>
       </div>
 

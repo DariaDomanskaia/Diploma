@@ -1,0 +1,57 @@
+<div class="wrap" *ngIf="isApplicationForm">
+  <div class="consultation-request">
+    <div class="close-tag" (click)="closeModal()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="1.93562" y1="2.6499" x2="13.9564" y2="14.6707" stroke="#BEBEBE" stroke-linecap="round"/>
+        <line x1="13.9236" y1="2.62971" x2="1.90277" y2="14.6505" stroke="#BEBEBE" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <form class="request-form" [formGroup]="applicationForm">
+      <div class="request-heading">
+        Заявка на услугу
+      </div>
+      <div class="form-input">
+        <select name="service" id="service" class="input" formControlName="service">
+          <option value="create">Создание сайтов</option>
+          <option value="promotion">Продвижение</option>
+          <option value="add">Реклама</option>
+          <option value="copy">Копирайтинг</option>
+        </select>
+      </div>
+      <div class="form-input">
+        <input type="text" class="input"
+               [ngStyle]="{'border-color': applicationForm.get('name')?.invalid
+               && (applicationForm.get('name')?.dirty || applicationForm.get('name')?.touched) ? 'red' : ''}"
+               placeholder="Ваше имя" formControlName="name">
+      </div>
+      <div class="form-input">
+        <input type="text" class="input"
+               [ngStyle]="{'border-color': applicationForm.get('phone')?.invalid
+               && (applicationForm.get('phone')?.dirty || applicationForm.get('phone')?.touched) ? 'red' : ''}"
+               placeholder="Ваш номер телефона" formControlName="phone">
+      </div>
+      <button class="btn btn-order">Оставить заявку</button>
+    </form>
+  </div>
+</div>
+
+
+<div class="wrap" *ngIf="isThanksPage">
+  <div class="consultation-request thanks">
+    <div class="close-tag" (click)="closeModal()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="1.93562" y1="2.6499" x2="13.9564" y2="14.6707" stroke="#BEBEBE" stroke-linecap="round"/>
+        <line x1="13.9236" y1="2.62971" x2="1.90277" y2="14.6505" stroke="#BEBEBE" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="request-form">
+      <div class="request-heading thanks-heading">
+        Спасибо за вашу заявку!
+      </div>
+      <div class="thanks-text">Мы свяжемся с вами при первой же возможности.</div>
+      <div class="thanks-action">
+        <button class="btn thanks-btn"  (click)="closeModal()">Окей</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -20,7 +20,7 @@ export class SignupComponent {
   router = inject(Router);
 
   signupForm = this.fb.group({
-    name: ['', [Validators.required, Validators.pattern(/^([А-Я][а-я]{3,}) ([А-Я][а-я]{3,})$/)]],
+    name: ['', [Validators.required, Validators.pattern(/^\s*([А-Я][а-я]+\s*)+$/)]],
     email: ['', [Validators.email, Validators.required]],
     password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)]],
     agree: [false, [Validators.requiredTrue]],
@@ -62,7 +62,7 @@ export class SignupComponent {
               this._snackBar.open('Ошибка регистрации');
             }
           }
-        })
+        });
     }
   }
 }

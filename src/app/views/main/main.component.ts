@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, Input, OnInit} from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {ArticleService} from "../../share/services/article.service";
 import {ArticleType} from "../../../types/article.type";
@@ -14,6 +14,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+
+  @Input() isClose: boolean = false;
 
   articleService = inject(ArticleService);
   fb = inject(FormBuilder);
@@ -62,11 +64,11 @@ export class MainComponent implements OnInit {
     },
     nav: false
   }
-  applicationForm = this.fb.group({
+ /* applicationForm = this.fb.group({
     service: [''],
     name: ['', [Validators.required, Validators.pattern(/^([А-Я][а-я]{3,}) ([А-Я][а-я]{3,})$/)]],
     phone: ['', [Validators.required, Validators.maxLength(11)]]
-  });
+  });*/
 
   selectValues = {
     first: 'Создание сайтов',
@@ -77,13 +79,16 @@ export class MainComponent implements OnInit {
 
   banners = [
     {
-      image: '1.png'
+      image: '1.png',
+      type: 'create'
     },
     {
-      image: '2.png'
+      image: '2.png',
+      type: 'promotion'
     },
     {
-      image: '3.png'
+      image: '3.png',
+      type: 'add'
     }
   ];
   reviews = [
@@ -109,6 +114,10 @@ export class MainComponent implements OnInit {
 
   articles: ArticleType[] = [];
   isLogged: boolean = false;
+  modalIsVisible: boolean = false;
+  type: string = '';
+
+
 
   ngOnInit(): void {
     this.articleService.getPopularArticles()
@@ -118,30 +127,34 @@ export class MainComponent implements OnInit {
   }
 
 
-  sendApplicationForm(): void {
-    if (this.applicationForm.valid &&
-      this.applicationForm.value.service &&
-      this.applicationForm.value.name &&
-      this.applicationForm.value.phone) {
-      this.requestService.consultationRequest(this.applicationForm.value.name, this.applicationForm.value.phone, this.applicationForm.value.service, 'order')
-        .subscribe((data: DefaultResponseType) => {
-          if (!data.error) {
-            this.isApplicationForm = false;
-            this.isThanksPage = true;
-          }
-          this._snackBar.open(data.message);
-        });
-    }
+  // sendApplicationForm(): void {
+  //   if (this.applicationForm.valid &&
+  //     this.applicationForm.value.service &&
+  //     this.applicationForm.value.name &&
+  //     this.applicationForm.value.phone) {
+  //     this.requestService.consultationRequest(this.applicationForm.value.name, this.applicationForm.value.phone, this.applicationForm.value.service, 'order')
+  //       .subscribe((data: DefaultResponseType) => {
+  //         if (!data.error) {
+  //           this.isApplicationForm = false;
+  //           this.isThanksPage = true;
+  //         }
+  //         this._snackBar.open(data.message);
+  //       });
+  //   }
+  //
+  // }
 
+  showModal(type: string = ''): void {
+    this.modalIsVisible = true;
+    this.type = type;
   }
 
-  showModal(): void {
-
-    this.isApplicationForm = true;
+  changeVisible(value: boolean) {
+    this.modalIsVisible = !value;
   }
 
-  closeModal(): void {
+  /*closeModal(): void {
     this.isApplicationForm = false;
     this.isThanksPage = false;
-  }
+  }*/
 }

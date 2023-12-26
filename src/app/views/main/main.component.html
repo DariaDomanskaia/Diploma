@@ -4,7 +4,7 @@
       <owl-carousel-o [options]="customOptions" #owlCarRev>
         <ng-template carouselSlide *ngFor="let banner of banners">
           <div class="banners-item" style="background-image: url('/assets/images/banners/{{banner.image}}')">
-            <a (click)="showModal()" class="btn detailed bnr-btn">Подробнее</a>
+            <a (click)="showModal(banner.type)" class="btn detailed bnr-btn">Подробнее</a>
           </div>
         </ng-template>
       </owl-carousel-o>
@@ -54,7 +54,7 @@
         </div>
         <div class="offer-item-action">
           <div class="item-action-price">От 7 500₽</div>
-          <button class="btn detailed" (click)="showModal()">Подробнее</button>
+          <button class="btn detailed" (click)="showModal('create')">Подробнее</button>
         </div>
       </div>
       <div class="offer-item">
@@ -68,7 +68,7 @@
         </div>
         <div class="offer-item-action">
           <div class="item-action-price">От 3 500₽</div>
-          <button class="btn detailed" (click)="showModal()">Подробнее</button>
+          <button class="btn detailed" (click)="showModal('promotion')">Подробнее</button>
         </div>
       </div>
       <div class="offer-item">
@@ -82,7 +82,7 @@
         </div>
         <div class="offer-item-action">
           <div class="item-action-price">От 1 000₽</div>
-          <button class="btn detailed" (click)="showModal()">Подробнее</button>
+          <button class="btn detailed" (click)="showModal('add')">Подробнее</button>
         </div>
       </div>
       <div class="offer-item">
@@ -96,7 +96,7 @@
         </div>
         <div class="offer-item-action">
           <div class="item-action-price">От 750₽</div>
-          <button class="btn detailed" (click)="showModal()">Подробнее</button>
+          <button class="btn detailed" (click)="showModal('copy')">Подробнее</button>
         </div>
       </div>
     </div>
@@ -277,7 +277,12 @@
   </div>
 </section>
 
-<div class="wrap" *ngIf="isApplicationForm">
+<app-modal *ngIf="modalIsVisible"
+           [type]="type"
+           (isClose)="changeVisible($event)"
+></app-modal>
+
+<!--<div class="wrap" *ngIf="isApplicationForm">
   <div class="consultation-request">
     <div class="close-tag" (click)="closeModal()">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -333,4 +338,4 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
