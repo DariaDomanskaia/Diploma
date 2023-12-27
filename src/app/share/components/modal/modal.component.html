@@ -24,13 +24,18 @@
                && (applicationForm.get('name')?.dirty || applicationForm.get('name')?.touched) ? 'red' : ''}"
                placeholder="Ваше имя" formControlName="name">
       </div>
+      <div class="error_message" *ngIf="applicationForm.get('name')?.invalid
+                 && (applicationForm.get('name')?.dirty || applicationForm.get('name')?.touched)">Имя должно состоять из букв
+        русского алфавита</div>
       <div class="form-input">
         <input type="text" class="input"
                [ngStyle]="{'border-color': applicationForm.get('phone')?.invalid
                && (applicationForm.get('phone')?.dirty || applicationForm.get('phone')?.touched) ? 'red' : ''}"
                placeholder="Ваш номер телефона" formControlName="phone">
       </div>
-      <button class="btn btn-order">Оставить заявку</button>
+      <div class="error_message" *ngIf="applicationForm.get('phone')?.invalid
+                 && (applicationForm.get('phone')?.dirty || applicationForm.get('phone')?.touched)">Номер должен состоять из 11 цифр</div>
+      <button class="btn btn-order" (click)="sendApplicationForm()" [disabled]="applicationForm.invalid">Оставить заявку</button>
     </form>
   </div>
 </div>

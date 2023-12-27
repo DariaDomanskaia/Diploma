@@ -13,7 +13,6 @@ export class CommentsService {
   http = inject(HttpClient);
 
 
-
   getComments(count: number, id: string): Observable<AllCommentsType> {
     return this.http.get<AllCommentsType>(environment.api + 'comments?offset=' + count + '&article=' + id);
   }

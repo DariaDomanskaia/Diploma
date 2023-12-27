@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {ArticleService} from "../../../share/services/article.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleType} from "../../../../types/article.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {environment} from "../../../../environments/environment";
@@ -16,6 +16,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class ArticlePageComponent implements OnInit {
 
+  router = inject(Router);
   activatedRout = inject(ActivatedRoute);
   articleService = inject(ArticleService);
   authService = inject(AuthService);
@@ -26,7 +27,7 @@ export class ArticlePageComponent implements OnInit {
 
   article!: ArticleType;
   relatedArticles: ArticleType[] = [];
-  commentsCount: number = 10;
+  commentsCount: number = 3;
   isLogged: boolean = false;
   commentForm = this.fb.group({
     comment: ['', Validators.required]
@@ -73,10 +74,11 @@ export class ArticlePageComponent implements OnInit {
     });
   }
 
-  getComments(countOfComments: number = 3, articleId: string) {
+  getComments(countOfComments: number = this.commentsCount, articleId: string) {
     this.commentsService.getComments(countOfComments, articleId)
       .subscribe(comments => {
         this.article.commentsCount = comments.allCount;
+        console.log(comments.comments);
         this.article.comments = comments.comments;
       })
   }
@@ -90,7 +92,8 @@ export class ArticlePageComponent implements OnInit {
             throw new Error(response.message);
           }
           this._snackBar.open(response.message);
-          this.getComments(this.commentsCount, this.article.id);
+          this.commentForm.reset();
+          this.getComments(3, this.article.id);
         });
     }
   }

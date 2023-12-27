@@ -16,7 +16,6 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/materia
 import {MatMenuModule} from "@angular/material/menu";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./core/auth/auth.interceptor";
-import {ModalComponent} from "./share/components/modal/modal.component";
 
 
 @NgModule({

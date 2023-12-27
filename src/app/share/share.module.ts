@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ModalComponent } from './components/modal/modal.component';
 
 
+
 @NgModule({
   declarations: [
     ArticleCardComponent,
@@ -19,7 +20,8 @@ import { ModalComponent } from './components/modal/modal.component';
     CommonModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ]
 })
 export class ShareModule {

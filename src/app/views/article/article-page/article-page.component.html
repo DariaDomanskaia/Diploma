@@ -71,7 +71,7 @@
         Чтобы оставлять комментарии, <a routerLink="/login">войдите</a> или <a routerLink="/signup">зарегистрируйтесь</a>
       </div>
       <form [formGroup]="commentForm">
-        <div class="article-first-comment-text" *ngIf="!!article.comments && isLogged">Будьте первым, кто оставит свой комментарий к статье!</div>
+        <div class="article-first-comment-text" *ngIf="!article.commentsCount && isLogged">Будьте первым, кто оставит свой комментарий к статье!</div>
         <div class="article-comments-text-area" *ngIf="isLogged">
         <textarea name="comment" id="comment"
                   formControlName="comment"
