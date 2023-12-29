@@ -55,32 +55,21 @@ export class ArticlePageComponent implements OnInit {
             });
 
 
-          /*if (this.authService.getIsLoggedIn()) {
-
-            this.favoriteService.getFavorites()
-              .subscribe((data: FavoriteType[] | DefaultResponseType) => {
-                if ((data as DefaultResponseType).error !== undefined) {
-                  const error = (data as DefaultResponseType).message;
-                  throw new Error(error);
-                }
-                const products = data as FavoriteType[];
-                const currentProductExists = products.find(item => item.id === this.product.id);
-                if (currentProductExists) {
-                  this.product.isInFavorite = true;
-                }
-              });
-          }*/
         });
     });
   }
 
-  getComments(countOfComments: number = this.commentsCount, articleId: string) {
-    this.commentsService.getComments(countOfComments, articleId)
+
+  getComments(articleId: string) {
+    this.commentsService.getComments(this.commentsCount, articleId)
       .subscribe(comments => {
-        this.article.commentsCount = comments.allCount;
-        console.log(comments.comments);
-        this.article.comments = comments.comments;
-      })
+        if (comments.comments.length > 0){
+         for (let i = 0; i < comments.comments.length; i++){
+           this.article.comments?.push(comments.comments[i]);
+         }
+        }
+        this.commentsCount += 10;
+      });
   }
 
 
@@ -93,7 +82,7 @@ export class ArticlePageComponent implements OnInit {
           }
           this._snackBar.open(response.message);
           this.commentForm.reset();
-          this.getComments(3, this.article.id);
+
         });
     }
   }
