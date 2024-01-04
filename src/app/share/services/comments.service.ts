@@ -20,4 +20,8 @@ export class CommentsService {
   addComment(text: string, articleId: string): Observable<DefaultResponseType> {
     return this.http.post<DefaultResponseType>(environment.api + 'comments', {text: text, article: articleId});
   };
+
+  applyActions(commentId: string, actionName: string): Observable<DefaultResponseType> {
+    return this.http.post<DefaultResponseType>(environment.api + 'comments/' + commentId + '/apply-action', {action: actionName});
+  };
 }

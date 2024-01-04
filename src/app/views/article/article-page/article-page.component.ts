@@ -54,7 +54,6 @@ export class ArticlePageComponent implements OnInit {
 
             });
 
-
         });
     });
   }
@@ -67,8 +66,10 @@ export class ArticlePageComponent implements OnInit {
          for (let i = 0; i < comments.comments.length; i++){
            this.article.comments?.push(comments.comments[i]);
          }
+          this.commentsCount += 10;
+
         }
-        this.commentsCount += 10;
+
       });
   }
 
@@ -82,12 +83,25 @@ export class ArticlePageComponent implements OnInit {
           }
           this._snackBar.open(response.message);
           this.commentForm.reset();
-
+          this.articleService.getArticle(this.article.url)
+            .subscribe((data: ArticleType) => {
+              this.article = data;
+            });
         });
     }
   }
 
   getReactions() {
 
+  }
+
+  addReactions(commentId: string, actionName: string){
+    this.commentsService.applyActions(commentId, actionName)
+      .subscribe(response => {
+        if (response.error) {
+          throw new Error(response.message);
+        }
+        this._snackBar.open('Спасибо, ваш голос учтён!');
+      })
   }
 }
