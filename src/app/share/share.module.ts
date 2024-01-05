@@ -4,17 +4,22 @@ import {RouterModule} from "@angular/router";
 import {ArticleCardComponent} from './components/article-card/article-card.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ModalComponent } from './components/modal/modal.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { ReduceDatePipe } from './pipes/reduce-date.pipe';
 
 
 
 @NgModule({
   declarations: [
     ArticleCardComponent,
-    ModalComponent
+    ModalComponent,
+    CommentComponent,
+    ReduceDatePipe
   ],
   exports: [
     ArticleCardComponent,
-    ModalComponent
+    ModalComponent,
+    CommentComponent
   ],
   imports: [
     CommonModule,

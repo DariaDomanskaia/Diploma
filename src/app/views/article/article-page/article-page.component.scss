@@ -182,7 +182,7 @@
 
       .comments-items {
 
-        .comment-item {
+        /*.comment-item {
           max-width: 854px;
           margin-bottom: 40px;
 
@@ -255,11 +255,18 @@
               margin-right: 15px;
             }
 
+            .like.active {
+
+              span {
+                color: #709FDC;
+              }
+            }
+
             .dislike {
               margin-right: 15px;
             }
           }
-        }
+        }*/
 
         .more-comments {
           margin-top: 60px;
