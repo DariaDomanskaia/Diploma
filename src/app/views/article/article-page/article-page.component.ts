@@ -43,6 +43,8 @@ export class ArticlePageComponent implements OnInit {
       this.articleService.getArticle(param['url'])
         .subscribe((data: ArticleType) => {
           this.article = data;
+          this.getReactions();
+
           console.log(this.article.comments);
           console.log(this.article);
           this.articleService.getRelatedArticles(param['url'])
@@ -57,16 +59,6 @@ export class ArticlePageComponent implements OnInit {
 
             });
         });
-      this.commentsService.getUserReactionsForComments(this.article.id)
-        .subscribe((commentsData: CommentReactionsType[] | DefaultResponseType) => {
-          if ((commentsData as DefaultResponseType).error !== undefined) {
-            throw new Error(((commentsData as DefaultResponseType).message));
-          }
-          const commentsDataResponse = commentsData as CommentReactionsType[];
-          if (commentsDataResponse) {
-            this.userActionsForComments = commentsDataResponse;
-          }
-        })
     });
   }
 
@@ -79,12 +71,11 @@ export class ArticlePageComponent implements OnInit {
             this.article.comments?.push(comments.comments[i]);
           }
           this.commentsCount += 10;
-
+          this.showReactionsForUser();
         }
 
       });
   }
-
 
   sendComment() {
     if (this.commentForm.valid && this.article.id && this.commentForm.value.comment) {
@@ -104,38 +95,54 @@ export class ArticlePageComponent implements OnInit {
   }
 
   getReactions() {
-
+    this.commentsService.getUserReactionsForComments(this.article.id)
+      .subscribe((commentsData: CommentReactionsType[] | DefaultResponseType) => {
+        if ((commentsData as DefaultResponseType).error !== undefined) {
+          throw new Error(((commentsData as DefaultResponseType).message));
+        }
+        const commentsDataResponse = commentsData as CommentReactionsType[];
+        if (commentsDataResponse) {
+          this.userActionsForComments = commentsDataResponse;
+          this.showReactionsForUser();
+        }
+      });
   }
 
   updateCount(reaction: CommentReactionsType[]) {
     if (reaction) {
-      this.article.comments?.forEach(item => {
-        if (item.id === reaction[0].comment) {
-          if (reaction[0].action === 'like') {
-            item.likesCount++;
-          } else if (reaction[0].action === 'dislike') {
-            item.dislikesCount++;
+      this.userActionsForComments.forEach(item => {
+        if (item.comment === reaction[0].comment) {
+          if (item.action === 'like' && reaction[0].action === 'dislike') {
+            this.article.comments?.forEach(comment => {
+              if (comment.id === reaction[0].comment) {
+                comment.likesCount --;
+                comment.dislikesCount ++;
+                this.getReactions();
+              }
+            });
+          } else if (item.action === 'dislike' && reaction[0].action === 'like') {
+            this.article.comments?.forEach(comment => {
+              if (comment.id === reaction[0].comment) {
+                comment.likesCount ++;
+                comment.dislikesCount --;
+                this.getReactions();
+              }
+            });
           }
         }
       });
     }
   }
 
-  /*addReactions(commentId: string, actionName: string){
-    this.commentsService.applyActions(commentId, actionName)
-      .subscribe(response => {
-        if (response.error) {
-          throw new Error(response.message);
+  showReactionsForUser() {
+    this.userActionsForComments.forEach(item => {
+      if (this.article.comments) {
+        for (let i = 0; i < this.article.comments?.length; i++) {
+          if (item.comment === this.article.comments[i].id) {
+            this.article.comments[i].isChecked = item.action;
+          }
         }
-        this._snackBar.open('Спасибо, ваш голос учтён!');
-        this.commentsService.getReactionsForComment(commentId)
-          .subscribe((data: CommentReactionsType[] | DefaultResponseType) => {
-            if ((data as DefaultResponseType).error !== undefined) {
-              throw new Error((data as DefaultResponseType).message);
-            }
-            const reaction = data as CommentReactionsType[];
-
-          });
-      });
-  }*/
+      }
+    });
+  }
 }

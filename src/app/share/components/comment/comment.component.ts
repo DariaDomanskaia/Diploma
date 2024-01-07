@@ -43,14 +43,12 @@ export class CommentComponent {
               throw new Error((data as DefaultResponseType).message);
             }
             const reaction = data as CommentReactionsType[];
-
-            if (reaction){
+            console.log(reaction);
+            if (!!reaction[0].action){
               switch (reaction[0].action) {
-                case 'like': this.isLike = true
-                  this.isDislike = false
+                case 'like': this.comment.isChecked = 'like'
                   break;
-                case 'dislike': this.isDislike = true
-                  this.isLike = false
+                case 'dislike': this.comment.isChecked = 'dislike'
                   break;
               }
             }
