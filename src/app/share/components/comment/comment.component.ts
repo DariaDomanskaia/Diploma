@@ -23,12 +23,8 @@ export class CommentComponent {
   isLike: boolean = false;
   isDislike: boolean = false;
   reaction: CommentReactionsType[] = [];
-  count: number = 1;
 
 
-  /*countChange() {
-    this.onCountChange.emit(this.reaction);
-  }*/
 
   addReactions(commentId: string, actionName: string){
     this.commentsService.applyActions(commentId, actionName)

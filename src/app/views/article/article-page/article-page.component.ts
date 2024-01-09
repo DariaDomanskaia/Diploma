@@ -8,7 +8,6 @@ import {AuthService} from "../../../core/auth/auth.service";
 import {CommentsService} from "../../../share/services/comments.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {UserInfoType} from "../../../../types/user-info.type";
 import {CommentReactionsType} from "../../../../types/comment-reactions.type";
 
 @Component({
@@ -44,9 +43,6 @@ export class ArticlePageComponent implements OnInit {
         .subscribe((data: ArticleType) => {
           this.article = data;
           this.getReactions();
-
-          console.log(this.article.comments);
-          console.log(this.article);
           this.articleService.getRelatedArticles(param['url'])
             .subscribe((articleData: ArticleType[] | DefaultResponseType) => {
               if ((articleData as DefaultResponseType).error !== undefined) {
@@ -56,7 +52,6 @@ export class ArticlePageComponent implements OnInit {
               if (articleDataResponse) {
                 this.relatedArticles = articleDataResponse;
               }
-
             });
         });
     });
