@@ -64,11 +64,6 @@ export class MainComponent implements OnInit {
     },
     nav: false
   }
- /* applicationForm = this.fb.group({
-    service: [''],
-    name: ['', [Validators.required, Validators.pattern(/^([А-Я][а-я]{3,}) ([А-Я][а-я]{3,})$/)]],
-    phone: ['', [Validators.required, Validators.maxLength(11)]]
-  });*/
 
   selectValues = {
     first: 'Создание сайтов',
@@ -91,6 +86,7 @@ export class MainComponent implements OnInit {
       type: 'add'
     }
   ];
+
   reviews = [
     {
       name: 'Станислав',
@@ -109,14 +105,10 @@ export class MainComponent implements OnInit {
     },
   ];
 
-  isApplicationForm: boolean = false;
-  isThanksPage: boolean = false;
-
   articles: ArticleType[] = [];
   isLogged: boolean = false;
   modalIsVisible: boolean = false;
   type: string = '';
-
 
 
   ngOnInit(): void {
@@ -125,24 +117,6 @@ export class MainComponent implements OnInit {
         this.articles = data;
       });
   }
-
-
-  // sendApplicationForm(): void {
-  //   if (this.applicationForm.valid &&
-  //     this.applicationForm.value.service &&
-  //     this.applicationForm.value.name &&
-  //     this.applicationForm.value.phone) {
-  //     this.requestService.consultationRequest(this.applicationForm.value.name, this.applicationForm.value.phone, this.applicationForm.value.service, 'order')
-  //       .subscribe((data: DefaultResponseType) => {
-  //         if (!data.error) {
-  //           this.isApplicationForm = false;
-  //           this.isThanksPage = true;
-  //         }
-  //         this._snackBar.open(data.message);
-  //       });
-  //   }
-  //
-  // }
 
   showModal(type: string = ''): void {
     this.modalIsVisible = true;
@@ -153,8 +127,4 @@ export class MainComponent implements OnInit {
     this.modalIsVisible = !value;
   }
 
-  /*closeModal(): void {
-    this.isApplicationForm = false;
-    this.isThanksPage = false;
-  }*/
 }

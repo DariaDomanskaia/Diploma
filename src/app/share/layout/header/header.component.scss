@@ -3,8 +3,8 @@
 header.header {
   padding: 40px 0;
 
-  .container {
 
+  .container {
 
     .header-content {
       display: flex;
@@ -12,7 +12,6 @@ header.header {
       justify-content: space-between;
       font-family: "Montserrat-500", sans-serif;
       font-size: 16px;
-
 
       .header-content-menu {
         display: flex;
@@ -62,14 +61,17 @@ header.header {
         align-items: center;
         text-decoration: none;
         color: $main-text-color;
+
         &.text:active, /* активная/посещенная ссылка */
         &.text:hover {
-           text-decoration: none !important;
+          text-decoration: none !important;
         }
+
         a {
           margin-right: 7px;
           cursor: pointer;
         }
+
         span {
           cursor: pointer;
         }
