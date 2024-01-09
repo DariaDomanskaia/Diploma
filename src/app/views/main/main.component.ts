@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
+import {Component, DoCheck, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {ArticleService} from "../../share/services/article.service";
 import {ArticleType} from "../../../types/article.type";
@@ -6,6 +6,8 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {RequestsService} from "../../share/services/requests.service";
 import {DefaultResponseType} from "../../../types/default-response.type";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ActivatedRoute} from "@angular/router";
+import {CommentReactionsType} from "../../../types/comment-reactions.type";
 
 
 @Component({
@@ -16,11 +18,13 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class MainComponent implements OnInit {
 
   @Input() isClose: boolean = false;
+  @Output() activeParam: EventEmitter<string> = new EventEmitter<string>();
 
   articleService = inject(ArticleService);
   fb = inject(FormBuilder);
   requestService = inject(RequestsService);
   _snackBar = inject(MatSnackBar);
+  activatedRoute = inject(ActivatedRoute);
 
   customOptions: OwlOptions = {
     items: 1,
@@ -126,5 +130,12 @@ export class MainComponent implements OnInit {
   changeVisible(value: boolean) {
     this.modalIsVisible = !value;
   }
+
+  /*ngDoCheck(): void {
+    this.activatedRoute.queryParams
+      .subscribe(params => {
+        console.log(params)
+      });
+  }*/
 
 }

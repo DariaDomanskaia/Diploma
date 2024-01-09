@@ -1,9 +1,9 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, DoCheck, EventEmitter, inject, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {UserInfoType} from "../../../../types/user-info.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {AuthService} from "../../../core/auth/auth.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
@@ -17,9 +17,11 @@ export class HeaderComponent implements OnInit {
   authService = inject(AuthService);
   router = inject(Router);
   _snackBar = inject(MatSnackBar);
+  // activatedRoute = inject(ActivatedRoute);
 
   userName: string | null = null;
   isLogged: boolean = false;
+  active: string = '';
 
   constructor() {
     this.isLogged = this.authService.getIsLoggedIn();
@@ -42,7 +44,7 @@ export class HeaderComponent implements OnInit {
         }
         const userInfo = data as UserInfoType;
         if (userInfo && userInfo.name) {
-          this.userName = userInfo.name.split(' ', )[0];
+          this.userName = userInfo.name.split(' ',)[0];
         }
       });
   }
@@ -65,4 +67,17 @@ export class HeaderComponent implements OnInit {
     this._snackBar.open('Выход из системы выполнен');
     this.router.navigate(['/']);
   }
+
+
+  changeParam(value: string) {
+    this.active = value;
+  }
+
+
+
+    // this.activatedRoute.queryParams
+    //   .subscribe(params => {
+    //     console.log(params)
+    //   });
+
 }
