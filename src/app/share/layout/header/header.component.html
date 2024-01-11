@@ -8,7 +8,7 @@
         <div class="header-menu">
           <nav>
             <ul>
-              <li [class.active]="active === '/'" (click)="changeParam('/')"><a routerLink="/" fragment="offer">Услуги</a></li>
+              <li [class.active]="param === '/'"><a routerLink="/" fragment="offer">Услуги</a></li>
               <li [class.active]="active === 'about'"><a (click)="changeParam('about')" routerLink="/" fragment="about">О нас</a></li>
               <li [class.active]="active === 'articles'"><a (click)="changeParam('articles')" routerLink="/articles">Статьи</a></li>
               <li [class.active]="active === 'review'"><a (click)="changeParam('review')" routerLink="/" fragment="review">Отзывы</a></li>

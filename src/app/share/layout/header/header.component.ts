@@ -1,10 +1,11 @@
-import {Component, DoCheck, EventEmitter, inject, OnInit} from '@angular/core';
+import {Component, DoCheck, EventEmitter, inject, Input, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {UserInfoType} from "../../../../types/user-info.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {AuthService} from "../../../core/auth/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ActiveParamsType} from "../../../../types/active-params.type";
 
 @Component({
   selector: 'app-header',
@@ -13,11 +14,13 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() param: string = '';
+
   userService = inject(UserService);
   authService = inject(AuthService);
   router = inject(Router);
   _snackBar = inject(MatSnackBar);
-  // activatedRoute = inject(ActivatedRoute);
+
 
   userName: string | null = null;
   isLogged: boolean = false;

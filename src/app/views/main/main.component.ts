@@ -20,6 +20,7 @@ export class MainComponent implements OnInit {
   @Input() isClose: boolean = false;
   @Output() activeParam: EventEmitter<string> = new EventEmitter<string>();
 
+
   articleService = inject(ArticleService);
   fb = inject(FormBuilder);
   requestService = inject(RequestsService);
@@ -131,11 +132,6 @@ export class MainComponent implements OnInit {
     this.modalIsVisible = !value;
   }
 
-  /*ngDoCheck(): void {
-    this.activatedRoute.queryParams
-      .subscribe(params => {
-        console.log(params)
-      });
-  }*/
+
 
 }

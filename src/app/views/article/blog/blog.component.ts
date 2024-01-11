@@ -31,21 +31,26 @@ export class BlogComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams
-      .subscribe(params => {
-      this.activeParams = ActiveParamsUtil.processParams(params);
+    this.categoryService.getCategories()
+      .subscribe(data => {
+        this.categories = data;
 
-      if (params['categories']) {
-        this.activeParams.categories = Array.isArray(params['categories']) ? params['categories'] : [params['categories']];
-      }
-      if (this.categories && this.categories.length > 0 &&
-        this.categories.some(category => this.activeParams.categories.find(item => category.url === item))) {
-      }
+        this.activatedRoute.queryParams
+          .subscribe(params => {
+            this.activeParams = ActiveParamsUtil.processParams(params);
 
-      this.processCatalog();
-    });
-
-
+            if (params['categories']) {
+              this.activeParams.categories = Array.isArray(params['categories']) ? params['categories'] : [params['categories']];
+              console.log(this.activeParams);
+              console.log(this.appliedFilters);
+            }
+            if (this.categories &&
+              this.categories.length > 0 &&
+              this.categories.some(category => this.activeParams.categories.find(item => category.url === item))) {
+            }
+            this.processCatalog();
+          });
+      });
   }
 
   processCatalog() {
@@ -91,6 +96,7 @@ export class BlogComponent implements OnInit {
       queryParams: this.activeParams
     });
   }
+
 
   toggleSorting(): void {
     this.sortingOpen = !this.sortingOpen;
