@@ -1,5 +1,6 @@
 export type CategoryType = {
   id: string,
   name: string,
-  url: string
+  url: string,
+  chosen?: boolean
 }

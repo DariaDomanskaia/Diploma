@@ -41,8 +41,6 @@ export class BlogComponent implements OnInit {
 
             if (params['categories']) {
               this.activeParams.categories = Array.isArray(params['categories']) ? params['categories'] : [params['categories']];
-              console.log(this.activeParams);
-              console.log(this.appliedFilters);
             }
             if (this.categories &&
               this.categories.length > 0 &&
@@ -104,18 +102,17 @@ export class BlogComponent implements OnInit {
 
 
   updateFilterParams(url: string, checked: boolean) {
+
     if (this.activeParams.categories && this.activeParams.categories.length > 0) {
       const existingTypeInParams = this.activeParams.categories.find(item => item === url);
-      if (existingTypeInParams && !checked) {
-        this.activeParams.categories = this.activeParams.categories.filter(item => item !== url)
-      } else if (!existingTypeInParams && checked) {
-
+      if (existingTypeInParams && checked) {
+        this.activeParams.categories = this.activeParams.categories.filter(item => item !== url);
+      } else if (!existingTypeInParams && !checked) {
         this.activeParams.categories = [...this.activeParams.categories, url];
       }
-    } else if (checked) {
+    } else if (!checked) {
       this.activeParams.categories = [url];
     }
-
     this.activeParams.page = 1;
     this.router.navigate(['/articles'], {
       queryParams: this.activeParams
