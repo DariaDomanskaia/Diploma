@@ -18,13 +18,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./core/auth/auth.interceptor";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    MainComponent
+    MainComponent,
+
 
   ],
   imports: [

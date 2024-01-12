@@ -10,9 +10,7 @@ const routes: Routes = [
     children: [
       {path: '', component: MainComponent},
       {path: '', loadChildren: () => import('./views/user/user.module').then(m => m.UserModule)},
-      {path: '', loadChildren: () => import('./views/article/article.module').then(m => m.ArticleModule)},
-      /*{path: '', loadChildren: () => import('./views/order/order.module').then(m => m.OrderModule)},
-      {path: '', loadChildren: () => import('./views/personal/personal.module').then(m => m.PersonalModule), canActivate: [authGuard]}*/
+      {path: '', loadChildren: () => import('./views/article/article.module').then(m => m.ArticleModule)}
     ]
   }
 ];

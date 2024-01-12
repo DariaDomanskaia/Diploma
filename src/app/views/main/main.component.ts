@@ -69,14 +69,12 @@ export class MainComponent implements OnInit {
     },
     nav: false
   }
-
   selectValues = {
     first: 'Создание сайтов',
     second: 'Продвижение',
     third: 'Реклама',
     fourth: 'Копирайтинг'
   };
-
   banners = [
     {
       image: '1.png',
@@ -91,7 +89,6 @@ export class MainComponent implements OnInit {
       type: 'add'
     }
   ];
-
   reviews = [
     {
       name: 'Станислав',

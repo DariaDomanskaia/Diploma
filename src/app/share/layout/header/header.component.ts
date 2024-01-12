@@ -76,7 +76,10 @@ export class HeaderComponent implements OnInit {
     this.active = value;
   }
 
+  scrollToElement($element: any): void {
 
+    $element.scrollIntoView({behavior: "smooth", inline: "nearest"});
+  }
 
     // this.activatedRoute.queryParams
     //   .subscribe(params => {
