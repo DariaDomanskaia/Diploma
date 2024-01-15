@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
 
   userName: string | null = null;
   isLogged: boolean = false;
-  active: string = '';
+  active: string = 'offer';
 
   constructor() {
     this.isLogged = this.authService.getIsLoggedIn();

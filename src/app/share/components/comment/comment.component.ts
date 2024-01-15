@@ -28,28 +28,34 @@ export class CommentComponent {
 
   addReactions(commentId: string, actionName: string){
     this.commentsService.applyActions(commentId, actionName)
-      .subscribe(response => {
-        if (response.error) {
-          throw new Error(response.message);
-        }
-        this._snackBar.open('Спасибо, ваш голос учтён!');
-        this.commentsService.getReactionsForComment(commentId)
-          .subscribe((data: CommentReactionsType[] | DefaultResponseType) => {
-            if ((data as DefaultResponseType).error !== undefined) {
-              throw new Error((data as DefaultResponseType).message);
-            }
-            const reaction = data as CommentReactionsType[];
-            console.log(reaction);
-            if (!!reaction[0].action){
-              switch (reaction[0].action) {
-                case 'like': this.comment.isChecked = 'like'
-                  break;
-                case 'dislike': this.comment.isChecked = 'dislike'
-                  break;
+      .subscribe({
+        next: (response) => {
+          if (response.error) {
+            throw new Error(response.message);
+          }
+          this._snackBar.open('Спасибо, ваш голос учтён!');
+          this.commentsService.getReactionsForComment(commentId)
+            .subscribe((data: CommentReactionsType[] | DefaultResponseType) => {
+              if ((data as DefaultResponseType).error !== undefined) {
+                throw new Error((data as DefaultResponseType).message);
               }
-            }
-            this.onCountChange.emit(reaction);
-          });
-      });
+              const reaction = data as CommentReactionsType[];
+              if (!!reaction[0].action){
+                switch (reaction[0].action) {
+                  case 'like': this.comment.isChecked = 'like'
+                    break;
+                  case 'dislike': this.comment.isChecked = 'dislike'
+                    break;
+                }
+              }
+              this.onCountChange.emit(reaction);
+            });
+        },
+        error: (data) => {
+          this._snackBar.open(data.error.message);
+        }
+        }
+
+      );
   }
 }

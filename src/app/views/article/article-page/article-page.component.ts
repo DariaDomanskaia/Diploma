@@ -55,6 +55,7 @@ export class ArticlePageComponent implements OnInit {
             });
         });
     });
+    console.log(this.userActionsForComments);
   }
 
 
@@ -84,9 +85,11 @@ export class ArticlePageComponent implements OnInit {
           this.articleService.getArticle(this.article.url)
             .subscribe((data: ArticleType) => {
               this.article = data;
+              this.showReactionsForUser();
             });
         });
     }
+
   }
 
   getReactions() {
@@ -104,6 +107,11 @@ export class ArticlePageComponent implements OnInit {
   }
 
   updateCount(reaction: CommentReactionsType[]) {
+    this.articleService.getArticle(this.article.url)
+      .subscribe((data: ArticleType) => {
+        this.article = data;
+      });
+    // this.getReactions();
     if (reaction) {
       this.userActionsForComments.forEach(item => {
         if (item.comment === reaction[0].comment) {
@@ -111,22 +119,49 @@ export class ArticlePageComponent implements OnInit {
             this.article.comments?.forEach(comment => {
               if (comment.id === reaction[0].comment) {
                 comment.likesCount --;
+                if (comment.likesCount >= 1) {
+                  comment.likesCount --;
+                } else if (comment.likesCount < 1) {
+                  comment.likesCount = 0;
+                }
                 comment.dislikesCount ++;
-                this.getReactions();
+                // this.getReactions();
               }
             });
           } else if (item.action === 'dislike' && reaction[0].action === 'like') {
             this.article.comments?.forEach(comment => {
               if (comment.id === reaction[0].comment) {
                 comment.likesCount ++;
-                comment.dislikesCount --;
-                this.getReactions();
+                if (comment.dislikesCount >= 1) {
+                  comment.dislikesCount --;
+                } else if (comment.dislikesCount < 1) {
+                  comment.dislikesCount = 0;
+                }
+
+                // this.getReactions();
+              }
+            });
+          }
+          else if (item.action === 'like' && reaction[0].action === 'like') {
+            this.article.comments?.forEach(comment => {
+              if (comment.id === reaction[0].comment) {
+                comment.likesCount ++;
+                // this.getReactions();
+              }
+            });
+          } else if (item.action === 'dislike' && reaction[0].action === 'dislike') {
+            this.article.comments?.forEach(comment => {
+              if (comment.id === reaction[0].comment) {
+                comment.dislikesCount ++;
+                // this.getReactions();
               }
             });
           }
         }
+
       });
     }
+    this.getReactions();
   }
 
   showReactionsForUser() {
