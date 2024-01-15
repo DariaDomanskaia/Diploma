@@ -55,7 +55,6 @@ export class ArticlePageComponent implements OnInit {
             });
         });
     });
-    console.log(this.userActionsForComments);
   }
 
 

@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, inject, OnInit} from '@angular/core';
 import {CategoryType} from "../../../../types/category.type";
 import {CategoryService} from "../../../share/services/category.service";
 import {debounceTime} from "rxjs";
@@ -28,6 +28,9 @@ export class BlogComponent implements OnInit {
   appliedFilters: AppliedFilterType[] = [];
   articles: ArticleType[] = [];
   sortingOpen: boolean = false;
+
+  constructor(private element: ElementRef) {
+  }
 
 
   ngOnInit(): void {
@@ -143,6 +146,13 @@ export class BlogComponent implements OnInit {
       this.router.navigate(['/articles'], {
         queryParams: this.activeParams
       });
+    }
+  }
+
+  @HostListener('document: click', ['$event'])
+  onClick(event: Event) {
+    if (this.sortingOpen && (event.target as HTMLElement).className.indexOf('blog-sorting') === -1) {
+      this.toggleSorting();
     }
   }
 }
